@@ -18,4 +18,5 @@ public abstract class State {
     abstract void handleInput();
     abstract void update(float dt);
     abstract void render(SpriteBatch sb);
+    abstract void dispose();
 }
