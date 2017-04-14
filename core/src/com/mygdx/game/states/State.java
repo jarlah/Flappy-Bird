@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 
-public abstract class State {
+abstract class State {
     OrthographicCamera cam;
     Vector3 mouse;
     GameStateManager gsm;

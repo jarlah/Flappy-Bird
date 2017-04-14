@@ -41,7 +41,7 @@ public class Bird {
         return position;
     }
 
-    public Vector3 getVelocity() {
+    private Vector3 getVelocity() {
         return velocity;
     }
 
