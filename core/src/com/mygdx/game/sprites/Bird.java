@@ -17,9 +17,14 @@ public class Bird {
     }
 
     public void update(float dt) {
-        this.getVelocity().add(0, GRAVITY, 0);
+        if(this.position.y > 0) {
+            this.getVelocity().add(0, GRAVITY, 0);
+        }
         this.getVelocity().scl(dt);
         this.getPosition().add(0, this.getVelocity().y, 0);
+        if (this.position.y < 0) {
+            this.position.y = 0;
+        }
         this.getVelocity().scl(1/dt);
     }
 
@@ -37,5 +42,9 @@ public class Bird {
 
     public Texture getBird() {
         return bird;
+    }
+
+    public void jump() {
+        this.velocity.y = 250;
     }
 }
