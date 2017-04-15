@@ -15,10 +15,6 @@ public class GameStateManager {
         states.push(state);
     }
 
-    private void pop() {
-        states.pop().dispose();
-    }
-
     void set(State state) {
         states.pop().dispose();
         states.push(state);

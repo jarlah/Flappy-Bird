@@ -25,7 +25,7 @@ public class Tube {
         bottomTube = new Texture("bottomtube.png");
         rand = new Random();
         posTopTube = new Vector2(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
-        posBottomTube = new Vector2(x, getPosTopTube().y - TUBE_GAP - getBottomTube().getHeight());
+        posBottomTube = new Vector2(x, posTopTube.y - TUBE_GAP - bottomTube.getHeight());
         boundsTop = new Rectangle(posTopTube.x, posTopTube.y, topTube.getWidth(), topTube.getHeight());
         boundsBottom = new Rectangle(posBottomTube.x, posBottomTube.y, bottomTube.getWidth(), bottomTube.getHeight());
     }
@@ -48,7 +48,7 @@ public class Tube {
 
     public void reposition(float x) {
         posTopTube.set(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
-        posBottomTube.set(x, getPosTopTube().y - TUBE_GAP - getBottomTube().getHeight());
+        posBottomTube.set(x, posTopTube.y - TUBE_GAP - bottomTube.getHeight());
         boundsTop.setPosition(posTopTube.x, posTopTube.y);
         boundsBottom.setPosition(posBottomTube.x, posBottomTube.y);
     }

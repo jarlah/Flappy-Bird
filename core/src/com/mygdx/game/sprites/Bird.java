@@ -17,6 +17,7 @@ public class Bird {
     private Rectangle bounds;
     private Animation birdAnimation;
     private Sound flap;
+    public boolean colliding;
 
     public Bird(int x, int y) {
         this.position = new Vector3(x, y, 0);
@@ -30,14 +31,16 @@ public class Bird {
     public void update(float dt) {
         birdAnimation.update(dt);
         if(this.position.y > 0) {
-            this.getVelocity().add(0, GRAVITY, 0);
+            this.velocity.add(0, GRAVITY, 0);
         }
-        this.getVelocity().scl(dt);
-        this.getPosition().add(MOVEMENT * dt, this.getVelocity().y, 0);
-        if (this.position.y < 0) {
-            this.position.y = 0;
+        this.velocity.scl(dt);
+        if (!colliding) {
+            this.position.add(MOVEMENT * dt, this.velocity.y, 0);
         }
-        this.getVelocity().scl(1/dt);
+        if (this.position.y < 62) {
+            this.position.y = 62;
+        }
+        this.velocity.scl(1/dt);
         bounds.setPosition(position.x, position.y);
     }
 
@@ -48,10 +51,6 @@ public class Bird {
 
     public Vector3 getPosition() {
         return position;
-    }
-
-    private Vector3 getVelocity() {
-        return velocity;
     }
 
     public TextureRegion getBird() {
